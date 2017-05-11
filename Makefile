@@ -43,8 +43,8 @@ $(DIT)/validation_test.o: $(DAT)/validation_test.c
 $(DUT)/$(EXECUTABLE_TEST): $(DIT)/main.o $(DIT)/deposit_test.o $(DIT)/validation_test.o $(DAR)/deposit.o
 	@if [ ! -d $(DUT) ] ; then echo "creating $(DUT)" ; mkdir bin; fi
 	$(CC) $(DIT)/main.o $(DIT)/deposit_test.o $(DIT)/validation_test.o $(DIR)/deposit.o -o $(DUT)/$(EXECUTABLE_TEST) 
-	./$(DUR)/$(EXECUTABLE_TEST)
+	./$(DUT)/$(EXECUTABLE_TEST)
 	
 .PHONY : clean
 clean:
-	rm -rf build/src/*.o build/test/*.o bin/deposit-calc/* bin/deposit-calc-test/*
+	rm -rf build/src/*.o build/test/*.o bin/* bin/*
