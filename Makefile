@@ -10,7 +10,7 @@ EXECUTABLE_TEST = testik
 SOURCES_TEST = deposit_test.c main.c validation_test.c
 DIT = build/test
 DAT = test
-DUT = bin
+
 
 all: $(DUR)/$(EXECUTABLE) Testpr
 $(DIR)/main.o: $(DAR)/main.c 
@@ -27,6 +27,7 @@ $(DUR)/$(EXECUTABLE): $(DIR)/main.o $(DIR)/deposit.o
 
  
 Testpr: $(DUT)/$(EXECUTABLE_TEST)
+	./$(DUR)/tests
 $(DIT)/main.o: $(DAT)/main.c 
 	@if [ ! -d $(DIT) ] ; then echo "creating $(DIT)" ; mkdir build; mkdir build/test; fi
 	$(CC) $(CFLAGS) -c $(DAT)/main.c -o $(DIT)/main.o 
@@ -40,7 +41,7 @@ $(DIT)/validation_test.o: $(DAT)/validation_test.c
 	$(CC) $(CFLAGS) -c $(DAT)/validation_test.c -o $(DIT)/validation_test.o 
 
 $(DUT)/$(EXECUTABLE_TEST): $(DIT)/main.o $(DIT)/deposit_test.o $(DIT)/validation_test.o $(DAR)/deposit.o
-	@if [ ! -d $(DUT) ] ; then echo "creating $(DUT)" ; mkdir bin; fi
+	@if [ ! -d $(DUR) ] ; then echo "creating $(DUR)" ; mkdir bin; fi
 	$(CC) $(DIT)/main.o $(DIT)/deposit_test.o $(DIT)/validation_test.o $(DIR)/deposit.o -o $(DUT)/$(EXECUTABLE_TEST) 
 
 
