@@ -27,7 +27,7 @@ $(DUR)/$(EXECUTABLE): $(DIR)/main.o $(DIR)/deposit.o
 
  
 Testpr: $(DUT)/$(EXECUTABLE_TEST)
-	./$(DUR)/testsik
+	./$(DUR)/testik
 $(DIT)/main.o: $(DAT)/main.c 
 	@if [ ! -d $(DIT) ] ; then echo "creating $(DIT)" ; mkdir build; mkdir build/test; fi
 	$(CC) $(CFLAGS) -c $(DAT)/main.c -o $(DIT)/main.o 
